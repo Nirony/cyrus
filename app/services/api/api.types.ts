@@ -1,5 +1,6 @@
 import { GeneralApiProblem } from "./api-problem"
 import { Character } from "../../models/character/character"
+import { UserQuestionModel } from "../../models/profile/userQuestions"
 
 export interface User {
   id: number
@@ -10,4 +11,5 @@ export type GetUsersResult = { kind: "ok"; users: User[] } | GeneralApiProblem
 export type GetUserResult = { kind: "ok"; user: User } | GeneralApiProblem
 
 export type GetCharactersResult = { kind: "ok"; characters: Character[] } | GeneralApiProblem
+export type GetUserQuestionsResult = { kind: "ok"; questions: UserQuestionModel[] } | GeneralApiProblem
 export type GetCharacterResult = { kind: "ok"; character: Character } | GeneralApiProblem

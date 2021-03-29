@@ -8,3 +8,27 @@ export const palette = {
   lighterGrey: "#CDD4DA",
   angry: "#dd3333",
 }
+
+export const darkTheme = {
+  dark: true,
+  colors: {
+    primary: palette.orange,
+    background: palette.black,
+    card: palette.lighterGrey,
+    text: palette.white,
+    border: palette.white,
+    notification: ''
+  }
+}
+
+export const lightTheme = {
+  dark: true,
+  colors: {
+    primary: palette.orange,
+    background: palette.white,
+    card: palette.lightGrey,
+    text: palette.black,
+    border: palette.black,
+    notification: palette.black
+  }
+}
