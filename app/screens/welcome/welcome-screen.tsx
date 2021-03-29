@@ -1,5 +1,5 @@
 import React from "react"
-import { View, ViewStyle, Text, ImageStyle, SafeAreaView, FlatList } from "react-native"
+import { View, ViewStyle, Text, ImageStyle, SafeAreaView, FlatList, TouchableOpacity } from "react-native"
 import { useNavigation, useTheme } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Button, Header, Screen } from "../../components"
@@ -21,22 +21,25 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
 
   return (
     <View testID="WelcomeScreen" style={FULL}>
-      <Screen style={{ flex: 1 }} preset="scroll" backgroundColor={color.transparent}>
+      <Screen style={{ flex: 1 }} backgroundColor={color.transparent}>
        <ThemeSwitch/>
        <Header headerText={'Get Stack Overflow Posts'} titleStyle={{ color: colors.text }} />
        <CustomInput placeHolder={'user ID'} onSubmit={(text) => getQuestions(text)} />
        <UserAvatarAndDetails/>
        <FlatList
          data={questions}
+         keyExtractor={(item, index) => index.toString()}
          renderItem={({ item, index }) => {
-           console.tron.log(item)
            return (
+             <TouchableOpacity onPress={() => console.tron.log(item.link)}>
              <ListItem key={index} bottomDivider>
-             <ListItem.Content>
-               <ListItem.Title>{item.title}</ListItem.Title>
-               <ListItem.Subtitle>{` view count: ${item.view_count}`}</ListItem.Subtitle>
-             </ListItem.Content>
-           </ListItem>)
+               <ListItem.Content>
+                 <ListItem.Title>{item.title}</ListItem.Title>
+                 <ListItem.Subtitle>{` view count: ${item.view_count}`}</ListItem.Subtitle>
+               </ListItem.Content>
+               <ListItem.Chevron/>
+           </ListItem>
+             </TouchableOpacity>)
          }}
          />
         { Array.isArray(questions) && !!questions.length && <Text> {`total of ${questions.length} questions found`}</Text>}
