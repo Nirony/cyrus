@@ -1,4 +1,4 @@
-import { Instance, types } from "mobx-state-tree"
+import { Instance } from "mobx-state-tree"
 
 export interface UserQuestionModel {
   tags: [string],

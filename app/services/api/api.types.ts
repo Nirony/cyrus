@@ -1,6 +1,6 @@
 import { GeneralApiProblem } from "./api-problem"
 import { Character } from "../../models/character/character"
-import { UserQuestionModel } from "../../models/profile/userQuestions"
+import { UserQuestionModel } from "../../models/userQuerstions/userQuestions"
 
 export interface User {
   id: number
