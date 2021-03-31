@@ -1,5 +1,3 @@
-import { Instance } from "mobx-state-tree"
-
 export interface UserQuestionModel {
   tags: [string],
   owner: {
@@ -24,5 +22,3 @@ export interface UserQuestionModel {
   link: string,
   title: string
 }
-
-export type IUSerQuestions = Instance<typeof UserQuestionModel>;
