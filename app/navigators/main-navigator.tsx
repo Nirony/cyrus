@@ -22,7 +22,7 @@ import { WelcomeScreen, DemoScreen, DemoListScreen, WebViewScreen } from "../scr
  */
 export type PrimaryParamList = {
   welcome: undefined
-  webView: undefined
+  webView: { url: string }
   demo: undefined
   demoList: undefined
 }

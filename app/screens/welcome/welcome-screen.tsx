@@ -4,10 +4,9 @@ import { useTheme } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Header, Screen } from "../../components"
 import { color } from "../../theme"
-import { ThemeSwitch } from "../../components/themeSwitch/ThemeSwitch"
 import { CustomInput } from "../../components/customInput/CustomInput"
 import { useStores } from "../../models"
-import { UserAvatarAndDetails } from "./components/userAvatarAndDetails"
+import { UserAvatarAndDetails } from "./components/UserAvatarAndDetails"
 import { QuestionsList } from "./components/QuestionsList"
 
 export const WelcomeScreen = observer(function WelcomeScreen() {

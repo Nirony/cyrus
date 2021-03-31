@@ -14,7 +14,7 @@ export const QuestionsList = observer((): React.ReactElement => {
   const [sortedQuestions, setSortedQuestions] = useState([] as UserQuestionModel[])
   const { userQuestionsStore: { questions } } = useStores()
   const navigation = useNavigation()
-  const nextScreen = () => navigation.navigate("webView")
+  const nextScreen = (url: string) => navigation.navigate("webView", { url })
 
   useEffect(() => {
     const sortedList = getSortedListByKey(selectedButton, [...questions])
@@ -45,7 +45,7 @@ export const QuestionsList = observer((): React.ReactElement => {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item, index }) => {
           return (
-            <TouchableOpacity onPress={() => nextScreen()}>
+            <TouchableOpacity onPress={() => nextScreen(item.link)}>
               <ListItem key={index} bottomDivider>
                 <ListItem.Content>
                   <ListItem.Title>{item.title}</ListItem.Title>
@@ -53,7 +53,6 @@ export const QuestionsList = observer((): React.ReactElement => {
                   <ListItem.Subtitle>{`Date: ${new Date(item.creation_date * 1000)}`}</ListItem.Subtitle>
                   <ListItem.Subtitle>{`Answers: ${item.answer_count}`}</ListItem.Subtitle>
                 </ListItem.Content>
-                <ListItem.Chevron/>
               </ListItem>
             </TouchableOpacity>)
         }}

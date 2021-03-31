@@ -1,10 +1,16 @@
 import React from "react"
-import { ViewStyle, SafeAreaView, WebView } from "react-native"
-import { useNavigation } from "@react-navigation/native"
+import { SafeAreaView } from "react-native"
+import { useNavigation, RouteProp } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Header } from "../../components"
+import WebView from "react-native-webview"
+import { PrimaryParamList } from "../../navigators"
 
-export const WebViewScreen = observer(function WelcomeScreen() {
+type webViewScreenRouteProp = RouteProp<PrimaryParamList, 'webView'>
+interface Props {
+  route?: webViewScreenRouteProp
+}
+export const WebViewScreen: React.FC<Props> = observer((props) => {
   const navigation = useNavigation()
   const goBack = () => navigation.goBack()
 
@@ -14,9 +20,10 @@ export const WebViewScreen = observer(function WelcomeScreen() {
         leftIcon="back"
         onLeftPress={goBack}
       />
-
+      <WebView
+        source={{ uri: props.route.params.url || '' }}
+        style={{ marginTop: 10 }}
+      />
     </SafeAreaView>
   )
 })
-
-
